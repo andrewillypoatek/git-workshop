@@ -13,8 +13,7 @@
 .ccard{background:#FBF6EA;border:2px solid #17150F;border-radius:12px;padding:22px 22px 8px;box-shadow:4px 4px 0 #17150F}
 .ch{font-family:'Space Mono',monospace;font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:#2438E0;margin-bottom:14px;padding-bottom:11px;border-bottom:2px solid rgba(36,56,224,.18)}
 .cmd{padding:0 0 16px}
-.csyn{display:inline-block;font-family:'Space Mono',monospace;font-size:13px;font-weight:700;background:#17150F;color:#F4ECD8;border-radius:6px;padding:5px 10px;margin-bottom:7px}
-.cmd p{font-size:12.5px;color:#5a5544;line-height:1.5;margin:0;font-weight:500}
+.cmd p{font-size:12.5px;color:#5a5544;line-height:1.5;margin:4px 0 0;font-weight:500}
 .cmd p code{font-family:'Space Mono',monospace;font-size:.9em;background:#e7ddc6;color:#2438E0;border-radius:3px;padding:1px 5px}
 @media(max-width:620px){.ccards{grid-template-columns:1fr}}
 </style>
@@ -27,30 +26,88 @@
 <p class="lead">Every command you'll touch during the exercises. Bookmark it and keep it open in a tab.</p>
 <div class="sec">the commands</div>
 <div class="ccards">
+
 <div class="ccard"><div class="ch">Ex 1 — Fork & Clone</div>
-<div class="cmd"><span class="csyn">git clone &lt;url&gt; hello-world</span><p>Download a repo from GitHub. Use the <strong>SSH</strong> URL (starts with <code>git@github.com:</code>), not HTTPS. The last word names the local folder.</p></div>
-<div class="cmd"><span class="csyn">cd &lt;folder-name&gt;</span><p>Navigate into the cloned folder.</p></div>
-<div class="cmd"><span class="csyn">git status</span><p>See the current state of your repo. Run it whenever you're unsure.</p></div>
+  <div class="cmd">
+    <div class="code"><span class="tt" data-tip="the git program">git</span> <span class="tt" data-tip="download a remote repo to your computer">clone</span> <span class="tt" data-tip="SSH URL of the repo — starts with git@github.com:">&lt;url&gt;</span> <span class="tt" data-tip="optional: custom name for the local folder">hello-world</span><button class="copy-btn" onclick="copyCode(this)">copy</button></div>
+    <p>Download a repo from GitHub. Use the <strong>SSH</strong> URL (starts with <code>git@github.com:</code>). The last word names the local folder.</p>
+  </div>
+  <div class="cmd">
+    <div class="code"><span class="tt" data-tip="change directory — navigate into a folder">cd</span> <span class="tt" data-tip="the folder you want to enter">&lt;folder-name&gt;</span><button class="copy-btn" onclick="copyCode(this)">copy</button></div>
+    <p>Navigate into the cloned folder.</p>
+  </div>
+  <div class="cmd">
+    <div class="code"><span class="tt" data-tip="the git program">git</span> <span class="tt" data-tip="show what's changed since the last commit">status</span><button class="copy-btn" onclick="copyCode(this)">copy</button></div>
+    <p>See the current state of your repo. Run this whenever you're unsure.</p>
+  </div>
 </div>
+
 <div class="ccard"><div class="ch">Ex 2 — Edit, Commit, Push</div>
-<div class="cmd"><span class="csyn">git add .</span><p>Stage all changed files, ready to commit.</p></div>
-<div class="cmd"><span class="csyn">git add &lt;filename&gt;</span><p>Stage a specific file only.</p></div>
-<div class="cmd"><span class="csyn">git commit -m "message"</span><p>Save a snapshot with a description of what changed.</p></div>
-<div class="cmd"><span class="csyn">git push</span><p>Upload your commits to GitHub.</p></div>
+  <div class="cmd">
+    <div class="code"><span class="tt" data-tip="the git program">git</span> <span class="tt" data-tip="stage files — prepare them for a commit">add</span> <span class="tt" data-tip="shorthand for 'all changed files in this folder'">.</span><button class="copy-btn" onclick="copyCode(this)">copy</button></div>
+    <p>Stage all changed files, ready to commit.</p>
+  </div>
+  <div class="cmd">
+    <div class="code"><span class="tt" data-tip="the git program">git</span> <span class="tt" data-tip="stage files — prepare them for a commit">add</span> <span class="tt" data-tip="stage just this specific file">&lt;filename&gt;</span><button class="copy-btn" onclick="copyCode(this)">copy</button></div>
+    <p>Stage a specific file only.</p>
+  </div>
+  <div class="cmd">
+    <div class="code"><span class="tt" data-tip="the git program">git</span> <span class="tt" data-tip="save a snapshot of your staged changes">commit</span> <span class="tt" data-tip="flag: write the commit message inline">-m</span> <span class="tt" data-tip="describe what changed — be specific">"message"</span><button class="copy-btn" onclick="copyCode(this)">copy</button></div>
+    <p>Save a snapshot with a description of what changed.</p>
+  </div>
+  <div class="cmd">
+    <div class="code"><span class="tt" data-tip="the git program">git</span> <span class="tt" data-tip="upload your local commits to GitHub">push</span><button class="copy-btn" onclick="copyCode(this)">copy</button></div>
+    <p>Upload your commits to GitHub.</p>
+  </div>
 </div>
+
 <div class="ccard"><div class="ch">Ex 3 — Branch & PR</div>
-<div class="cmd"><span class="csyn">git checkout -b &lt;name&gt;</span><p>Create a branch and switch to it. Use <code>feature/your-name</code>.</p></div>
-<div class="cmd"><span class="csyn">git branch</span><p>List all branches. The active one is marked with <code>*</code>.</p></div>
-<div class="cmd"><span class="csyn">git push -u origin &lt;name&gt;</span><p>Push a new branch to GitHub for the first time.</p></div>
+  <div class="cmd">
+    <div class="code"><span class="tt" data-tip="the git program">git</span> <span class="tt" data-tip="switch to a different branch">checkout</span> <span class="tt" data-tip="flag: create the branch if it doesn't exist">-b</span> <span class="tt" data-tip="name for the new branch — e.g. feature/your-name">&lt;name&gt;</span><button class="copy-btn" onclick="copyCode(this)">copy</button></div>
+    <p>Create a branch and switch to it. Use <code>feature/your-name</code>.</p>
+  </div>
+  <div class="cmd">
+    <div class="code"><span class="tt" data-tip="the git program">git</span> <span class="tt" data-tip="list all branches — active one marked with *">branch</span><button class="copy-btn" onclick="copyCode(this)">copy</button></div>
+    <p>List all branches. The active one is marked with <code>*</code>.</p>
+  </div>
+  <div class="cmd">
+    <div class="code"><span class="tt" data-tip="the git program">git</span> <span class="tt" data-tip="upload your commits to GitHub">push</span> <span class="tt" data-tip="flag: link this local branch to the remote — only needed the first time">-u</span> <span class="tt" data-tip="the remote repo on GitHub">origin</span> <span class="tt" data-tip="the branch to push">&lt;name&gt;</span><button class="copy-btn" onclick="copyCode(this)">copy</button></div>
+    <p>Push a new branch to GitHub for the first time. After this, <code>git push</code> is enough.</p>
+  </div>
 </div>
+
 <div class="ccard"><div class="ch">Good to know</div>
-<div class="cmd"><span class="csyn">git log --oneline</span><p>See the commit history in a compact view.</p></div>
-<div class="cmd"><span class="csyn">git diff</span><p>See exactly what changed since your last commit.</p></div>
-<div class="cmd"><span class="csyn">git pull</span><p>Download and apply the latest changes from GitHub.</p></div>
+  <div class="cmd">
+    <div class="code"><span class="tt" data-tip="the git program">git</span> <span class="tt" data-tip="show the commit history">log</span> <span class="tt" data-tip="compact view: one line per commit">--oneline</span><button class="copy-btn" onclick="copyCode(this)">copy</button></div>
+    <p>See the commit history in a compact view.</p>
+  </div>
+  <div class="cmd">
+    <div class="code"><span class="tt" data-tip="the git program">git</span> <span class="tt" data-tip="show exactly what changed since your last commit">diff</span><button class="copy-btn" onclick="copyCode(this)">copy</button></div>
+    <p>See exactly what changed since your last commit.</p>
+  </div>
+  <div class="cmd">
+    <div class="code"><span class="tt" data-tip="the git program">git</span> <span class="tt" data-tip="download and apply the latest changes from GitHub">pull</span><button class="copy-btn" onclick="copyCode(this)">copy</button></div>
+    <p>Download and apply the latest changes from GitHub.</p>
+  </div>
+  <div class="cmd">
+    <div class="code"><span class="tt" data-tip="the git program">git</span> <span class="tt" data-tip="manage remote connections">remote</span> <span class="tt" data-tip="flag: show the full URLs">-v</span><button class="copy-btn" onclick="copyCode(this)">copy</button></div>
+    <p>Show which remote repo this is connected to. Useful for checking you're pushing to the right place.</p>
+  </div>
 </div>
+
 </div>
 <div class="note ok"><strong>Tip —</strong> Run <span class="inline">git status</span> constantly, before and after every step. It's the fastest way to understand where you are.</div>
 <div class="foot"><b>$</b> git workshop · cheatsheet</div>
 </div></div>
+
+<script>
+function copyCode(btn) {
+  const text = btn.parentElement.childNodes[0].textContent.trim();
+  navigator.clipboard.writeText(text).then(() => {
+    btn.textContent = 'copied!';
+    setTimeout(() => btn.textContent = 'copy', 1800);
+  });
+}
+</script>
 </body>
 </html>
