@@ -19,11 +19,10 @@
       .step { display: flex; gap: 20px; padding: 20px 0; border-bottom: 1px solid #2D333B; }
       .step:last-child { border-bottom: none; }
       .step-num { flex-shrink: 0; width: 28px; height: 28px; border-radius: 50%; background: #161B22; border: 1.5px solid #39D353; font-size: 0.8rem; font-weight: 700; color: #39D353; display: flex; align-items: center; justify-content: center; margin-top: 2px; }
-      .step-num.orange { border-color: #FFA657; color: #FFA657; }
       .step-body h2 { font-size: 0.95rem; color: #E6EDF3; font-weight: 700; margin-bottom: 6px; }
       .step-body p { font-size: 0.88rem; color: #8B949E; line-height: 1.6; margin-bottom: 8px; }
       .step-body p:last-child { margin-bottom: 0; }
-      code { display: block; background: #161B22; border: 1px solid #2D333B; border-radius: 8px; font-family: monospace; font-size: 0.88rem; color: #39D353; padding: 12px 16px; margin: 8px 0; }
+      code { display: block; position: relative; background: #161B22; border: 1px solid #2D333B; border-radius: 8px; font-family: monospace; font-size: 0.88rem; color: #39D353; padding: 12px 48px 12px 16px; margin: 8px 0; line-height: 2; }
       .inline { display: inline; background: #161B22; border: 1px solid #2D333B; border-radius: 4px; padding: 1px 6px; font-size: 0.85em; color: #58A6FF; }
       .note { background: #161B22; border-left: 3px solid #FFA657; border-radius: 6px; padding: 12px 16px; font-size: 0.85rem; color: #8B949E; line-height: 1.6; margin: 8px 0; }
       .note strong { color: #FFA657; }
@@ -33,6 +32,15 @@
       .explore-item { background: #161B22; border: 1px solid #2D333B; border-radius: 8px; padding: 14px; }
       .explore-item .var { font-size: 0.82rem; color: #FFA657; margin-bottom: 4px; }
       .explore-item .hint { font-size: 0.78rem; color: #8B949E; }
+
+      /* ── Tooltips ── */
+      .tt { position: relative; cursor: help; border-bottom: 1px dashed rgba(57,211,83,0.4); display: inline-block; }
+      .tt::after { content: attr(data-tip); position: absolute; bottom: calc(100% + 7px); left: 50%; transform: translateX(-50%); background: #21262D; border: 1px solid #39D353; border-radius: 6px; padding: 5px 10px; font-size: 0.72rem; color: #E6EDF3; white-space: nowrap; pointer-events: none; opacity: 0; transition: opacity 0.15s; z-index: 100; }
+      .tt:hover::after { opacity: 1; }
+
+      /* ── Copy button ── */
+      .copy-btn { position: absolute; top: 8px; right: 8px; background: #21262D; border: 1px solid #2D333B; border-radius: 4px; color: #8B949E; font-size: 0.7rem; font-family: monospace; padding: 3px 7px; cursor: pointer; transition: color 0.15s, border-color 0.15s; }
+      .copy-btn:hover { color: #39D353; border-color: #39D353; }
     </style>
   </head>
   <body>
@@ -67,7 +75,7 @@
           <div class="step-num">3</div>
           <div class="step-body">
             <h2>Stage your changes</h2>
-            <code>git add .</code>
+            <code><span class="tt" data-tip="the git program">git</span> <span class="tt" data-tip="mark files as ready to be committed">add</span> <span class="tt" data-tip="shorthand for 'all changed files in this folder'">.</span></code>
             <p>This marks all changed files as ready to commit.</p>
           </div>
         </div>
@@ -76,7 +84,7 @@
           <div class="step-num">4</div>
           <div class="step-body">
             <h2>Commit with a message</h2>
-            <code>git commit -m "Add my name and bg color"</code>
+            <code><span class="tt" data-tip="the git program">git</span> <span class="tt" data-tip="save a snapshot of all staged changes">commit</span> <span class="tt" data-tip="flag: attach a message to this commit">-m</span> <span class="tt" data-tip="describe what changed — be specific">"Add my name and bg color"</span></code>
             <p>The message is a note to your future self. Make it descriptive.</p>
           </div>
         </div>
@@ -85,7 +93,7 @@
           <div class="step-num">5</div>
           <div class="step-body">
             <h2>Push to GitHub</h2>
-            <code>git push</code>
+            <code><span class="tt" data-tip="the git program">git</span> <span class="tt" data-tip="upload your local commits to GitHub">push</span></code>
             <div class="success"><strong>Verify:</strong> Go to your fork on GitHub — you should see the commit message next to the changed files.</div>
           </div>
         </div>
@@ -115,5 +123,25 @@
       </div>
 
     </div>
+    <script>
+      document.querySelectorAll('code').forEach(function(block) {
+        var command = block.innerText.trim();
+        var btn = document.createElement('button');
+        btn.className = 'copy-btn';
+        btn.textContent = 'copy';
+        btn.addEventListener('click', function() {
+          navigator.clipboard.writeText(command);
+          btn.textContent = 'copied!';
+          btn.style.color = '#39D353';
+          btn.style.borderColor = '#39D353';
+          setTimeout(function() {
+            btn.textContent = 'copy';
+            btn.style.color = '';
+            btn.style.borderColor = '';
+          }, 1500);
+        });
+        block.appendChild(btn);
+      });
+    </script>
   </body>
 </html>
