@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Ex 3: Branch &amp; PR — Git &amp; GitHub Workshop</title>
+    <style>
+      * { box-sizing: border-box; margin: 0; padding: 0; }
+      body { font-family: monospace; background: #0D1117; color: #E6EDF3; min-height: 100vh; padding: 60px 24px; }
+      .container { max-width: 680px; margin: 0 auto; }
+      .back { display: inline-block; font-size: 0.82rem; color: #8B949E; text-decoration: none; margin-bottom: 40px; transition: color 0.15s; }
+      .back:hover { color: #58A6FF; }
+      .label { font-size: 0.78rem; color: #58A6FF; letter-spacing: 0.12em; text-transform: uppercase; margin-bottom: 14px; }
+      h1 { font-size: 2rem; font-weight: 700; color: #E6EDF3; margin-bottom: 10px; }
+      .subtitle { font-size: 0.9rem; color: #8B949E; line-height: 1.65; margin-bottom: 40px; }
+      .badge { display: inline-block; background: #21262D; border: 1px solid #2D333B; border-radius: 20px; font-size: 0.72rem; color: #8B949E; padding: 3px 10px; margin-bottom: 20px; }
+      .steps { display: flex; flex-direction: column; }
+      .step { display: flex; gap: 20px; padding: 20px 0; border-bottom: 1px solid #2D333B; }
+      .step:last-child { border-bottom: none; }
+      .step-num { flex-shrink: 0; width: 28px; height: 28px; border-radius: 50%; background: #161B22; border: 1.5px solid #58A6FF; font-size: 0.8rem; font-weight: 700; color: #58A6FF; display: flex; align-items: center; justify-content: center; margin-top: 2px; }
+      .step-body h2 { font-size: 0.95rem; color: #E6EDF3; font-weight: 700; margin-bottom: 6px; }
+      .step-body p { font-size: 0.88rem; color: #8B949E; line-height: 1.6; margin-bottom: 8px; }
+      .step-body p:last-child { margin-bottom: 0; }
+      code { display: block; background: #161B22; border: 1px solid #2D333B; border-radius: 8px; font-family: monospace; font-size: 0.88rem; color: #39D353; padding: 12px 16px; margin: 8px 0; }
+      .inline { display: inline; background: #161B22; border: 1px solid #2D333B; border-radius: 4px; padding: 1px 6px; font-size: 0.85em; color: #58A6FF; }
+      .note { background: #161B22; border-left: 3px solid #FFA657; border-radius: 6px; padding: 12px 16px; font-size: 0.85rem; color: #8B949E; line-height: 1.6; margin: 8px 0; }
+      .note strong { color: #FFA657; }
+      .success { background: #161B22; border-left: 3px solid #39D353; border-radius: 6px; padding: 12px 16px; font-size: 0.85rem; color: #8B949E; line-height: 1.6; margin: 8px 0; }
+      .success strong { color: #39D353; }
+      .diagram { background: #161B22; border: 1px solid #2D333B; border-radius: 10px; padding: 24px; margin: 8px 0; }
+      .branch-row { display: flex; align-items: center; gap: 8px; margin-bottom: 16px; }
+      .branch-row:last-child { margin-bottom: 0; }
+      .dot { width: 12px; height: 12px; border-radius: 50%; flex-shrink: 0; }
+      .line { height: 2px; flex: 1; }
+      .branch-label { font-size: 0.78rem; white-space: nowrap; }
+      .branch-name { font-size: 0.78rem; font-weight: 700; }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <a class="back" href="index.html">← back to workshop</a>
+      <div class="label">// ex.03</div>
+      <h1>Branch &amp; Pull Request</h1>
+      <span class="badge">0:32 → 0:43</span>
+      <p class="subtitle">Create a separate branch to keep your work isolated from <span class="inline">main</span>, then open a Pull Request to propose merging it back.</p>
+
+      <div class="diagram">
+        <div class="branch-row">
+          <div class="dot" style="background:#58A6FF"></div>
+          <div class="line" style="background:#58A6FF"></div>
+          <div class="dot" style="background:#58A6FF"></div>
+          <div class="line" style="background:#58A6FF; flex:2"></div>
+          <div class="dot" style="background:#58A6FF"></div>
+          <div class="branch-name" style="color:#58A6FF; margin-left:8px">main</div>
+        </div>
+        <div class="branch-row" style="padding-left:20px">
+          <div class="dot" style="background:#39D353"></div>
+          <div class="line" style="background:#39D353"></div>
+          <div class="dot" style="background:#39D353"></div>
+          <div class="line" style="background:#39D353"></div>
+          <div class="dot" style="background:#39D353"></div>
+          <div class="branch-name" style="color:#39D353; margin-left:8px">feature/your-name</div>
+        </div>
+        <div style="font-size:0.75rem; color:#8B949E; margin-top:14px;">Your branch lives alongside main — changes are isolated until you PR them in.</div>
+      </div>
+
+      <div class="steps">
+
+        <div class="step">
+          <div class="step-num">1</div>
+          <div class="step-body">
+            <h2>Create a new branch</h2>
+            <code>git checkout -b feature/your-name</code>
+            <p>Replace <span class="inline">your-name</span> with your actual name, e.g. <span class="inline">feature/miguel</span>.</p>
+          </div>
+        </div>
+
+        <div class="step">
+          <div class="step-num">2</div>
+          <div class="step-body">
+            <h2>Make an edit</h2>
+            <p>Change anything you like — the subtitle in <span class="inline">index.html</span>, a color in <span class="inline">style.css</span>, whatever you want.</p>
+          </div>
+        </div>
+
+        <div class="step">
+          <div class="step-num">3</div>
+          <div class="step-body">
+            <h2>Stage and commit</h2>
+            <code>git add .
+git commit -m "your message here"</code>
+          </div>
+        </div>
+
+        <div class="step">
+          <div class="step-num">4</div>
+          <div class="step-body">
+            <h2>Push the branch to GitHub</h2>
+            <code>git push -u origin feature/your-name</code>
+            <p>The <span class="inline">-u</span> flag links your local branch to GitHub so future pushes just need <span class="inline">git push</span>.</p>
+          </div>
+        </div>
+
+        <div class="step">
+          <div class="step-num">5</div>
+          <div class="step-body">
+            <h2>Open a Pull Request</h2>
+            <p>Go to your fork on GitHub. You'll see a banner: <strong>"Compare &amp; pull request"</strong> — click it.</p>
+            <p>Set the target to <span class="inline">main</span>, write a short description, and click <strong>Create pull request</strong>.</p>
+            <div class="success"><strong>Goal:</strong> Everyone opens a PR. Merging is optional today.</div>
+            <div class="note"><strong>Note:</strong> You're opening a PR on your own fork. In real teams, you'd PR into a shared repo.</div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </body>
+</html>
