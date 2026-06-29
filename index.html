@@ -1,223 +1,41 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Git & GitHub Workshop</title>
-    <style>
-      * { box-sizing: border-box; margin: 0; padding: 0; }
-
-      body {
-        font-family: monospace;
-        background: #0D1117;
-        color: #E6EDF3;
-        min-height: 100vh;
-        padding: 60px 24px;
-      }
-
-      .container {
-        max-width: 720px;
-        margin: 0 auto;
-      }
-
-      /* ── Header ── */
-      .header {
-        margin-bottom: 56px;
-      }
-
-      .header .label {
-        font-size: 0.78rem;
-        color: #39D353;
-        letter-spacing: 0.12em;
-        text-transform: uppercase;
-        margin-bottom: 14px;
-      }
-
-      .header h1 {
-        font-size: clamp(1.8rem, 5vw, 2.8rem);
-        color: #E6EDF3;
-        font-weight: 700;
-        line-height: 1.15;
-        margin-bottom: 16px;
-      }
-
-      .header h1 span { color: #39D353; }
-
-      .header p {
-        font-size: 0.95rem;
-        color: #8B949E;
-        line-height: 1.7;
-        max-width: 520px;
-      }
-
-      /* ── Section label ── */
-      .section-label {
-        font-size: 0.72rem;
-        color: #58A6FF;
-        letter-spacing: 0.12em;
-        text-transform: uppercase;
-        margin-bottom: 16px;
-        margin-top: 48px;
-      }
-
-      /* ── Cards ── */
-      .cards {
-        display: grid;
-        grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-        gap: 16px;
-      }
-
-      .card {
-        display: block;
-        text-decoration: none;
-        background: #161B22;
-        border: 1.5px solid #2D333B;
-        border-radius: 10px;
-        padding: 22px 24px;
-        transition: border-color 0.15s, transform 0.15s;
-      }
-
-      .card:hover {
-        border-color: #39D353;
-        transform: translateY(-2px);
-      }
-
-      .card:hover .card-arrow { color: #39D353; }
-
-      .card-top {
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        margin-bottom: 10px;
-      }
-
-      .card-icon {
-        font-size: 1.2rem;
-      }
-
-      .card-arrow {
-        color: #2D333B;
-        font-size: 1rem;
-        transition: color 0.15s;
-      }
-
-      .card h2 {
-        font-size: 0.95rem;
-        color: #E6EDF3;
-        font-weight: 700;
-        margin-bottom: 6px;
-      }
-
-      .card p {
-        font-size: 0.82rem;
-        color: #8B949E;
-        line-height: 1.55;
-      }
-
-      /* ── PR exercise card ── */
-      .card.highlight {
-        border-color: #FFA657;
-      }
-
-      .card.highlight:hover {
-        border-color: #FFA657;
-      }
-
-      .card.highlight:hover .card-arrow { color: #FFA657; }
-
-      /* ── Footer ── */
-      .footer {
-        margin-top: 64px;
-        padding-top: 24px;
-        border-top: 1px solid #2D333B;
-        font-size: 0.78rem;
-        color: #8B949E;
-      }
-
-      .footer span { color: #39D353; }
-    </style>
-  </head>
-  <body>
-    <div class="container">
-
-      <div class="header">
-        <div class="label">// workshop</div>
-        <h1>Git <span>&</span> GitHub<br>Workshop</h1>
-        <p>A hands-on 45-minute session for the TELUS Digital design team. Fork, clone, edit, commit, push — you'll do the whole loop today.</p>
-      </div>
-
-      <div class="section-label">// before we start</div>
-      <div class="cards">
-        <a class="card" href="prework.html">
-          <div class="card-top">
-            <span class="card-icon">⚙️</span>
-            <span class="card-arrow">→</span>
-          </div>
-          <h2>Pre-work</h2>
-          <p>Install Git, create a GitHub account, and set up SSH. Complete this before the session.</p>
-        </a>
-        <a class="card" href="cheatsheet.html">
-          <div class="card-top">
-            <span class="card-icon">📋</span>
-            <span class="card-arrow">→</span>
-          </div>
-          <h2>Cheatsheet</h2>
-          <p>All the commands you'll use today. Keep this open during the exercises.</p>
-        </a>
-      </div>
-
-      <div class="section-label">// workshop</div>
-      <div class="cards">
-        <a class="card" href="intro.html">
-          <div class="card-top">
-            <span class="card-icon">💡</span>
-            <span class="card-arrow">→</span>
-          </div>
-          <h2>Intro</h2>
-          <p>Git vs GitHub, key terms, and the workflow. Start here.</p>
-        </a>
-        <a class="card" href="ex1.html">
-          <div class="card-top">
-            <span class="card-icon">🍴</span>
-            <span class="card-arrow">→</span>
-          </div>
-          <h2>Ex 1 — Fork &amp; Clone</h2>
-          <p>Get the instructor's repo onto your machine.</p>
-        </a>
-        <a class="card" href="ex2.html">
-          <div class="card-top">
-            <span class="card-icon">✏️</span>
-            <span class="card-arrow">→</span>
-          </div>
-          <h2>Ex 2 — Edit, Commit, Push</h2>
-          <p>Make changes, save a snapshot, push to GitHub.</p>
-        </a>
-        <a class="card" href="ex3.html">
-          <div class="card-top">
-            <span class="card-icon">🌿</span>
-            <span class="card-arrow">→</span>
-          </div>
-          <h2>Ex 3 — Branch &amp; PR</h2>
-          <p>Create a branch and open a Pull Request.</p>
-        </a>
-      </div>
-
-      <div class="section-label">// after the workshop</div>
-      <div class="cards">
-        <a class="card highlight" href="participants/index.html">
-          <div class="card-top">
-            <span class="card-icon">🚀</span>
-            <span class="card-arrow">→</span>
-          </div>
-          <h2>Participant Pages</h2>
-          <p>Fork this repo, edit your personal page, and open a PR to add yourself to the team gallery.</p>
-        </a>
-      </div>
-
-      <div class="footer">
-        <span>$</span> git workshop · TELUS Digital Design Team
-      </div>
-
-    </div>
-  </body>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Git & GitHub Workshop</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="workshop.css">
+<style>
+.wrap{padding:72px 24px 56px}
+h1{font-size:76px;line-height:.9;margin:24px 0 0}
+.lead{max-width:480px}
+</style>
+</head>
+<body>
+<div class="wrap"><div class="shell">
+<div class="kick">45-min hands-on</div>
+<h1>Git <mark>&</mark><br>GitHub<br>Workshop</h1>
+<p class="lead">A hands-on session for the design team. Fork, clone, edit, commit, push — you'll run the whole loop today, by hand.</p>
+<div class="sec">before we start</div>
+<div class="cards">
+<a class="card" href="prework.html"><div class="num">00</div><h2>Pre-work</h2><p>Install Git, create a GitHub account, and set up SSH. Complete this before the session.</p></a>
+<a class="card" href="cheatsheet.html"><div class="num">＋</div><h2>Cheatsheet</h2><p>Every command you'll use today. Keep it open during the exercises.</p></a>
+</div>
+<div class="sec">the workshop</div>
+<div class="cards">
+<a class="card" href="intro.html"><div class="num">01</div><h2>Intro</h2><p>Git vs GitHub, key terms, and the workflow. Start here.</p></a>
+<a class="card" href="ex1.html"><div class="num">02</div><h2>Fork & Clone</h2><p>Get the instructor's repo onto your machine.</p></a>
+<a class="card" href="ex2.html"><div class="num">03</div><h2>Edit · Commit · Push</h2><p>Make changes, save a snapshot, push to GitHub.</p></a>
+<a class="card" href="ex3.html"><div class="num">04</div><h2>Branch & PR</h2><p>Create a branch and open a Pull Request.</p></a>
+</div>
+<div class="sec">after the workshop</div>
+<div class="cards">
+<a class="card wide" href="participants/index.html"><div class="num">PR</div><div class="wide-body"><h2>Participant Pages</h2><p>Fork this repo, edit your personal page, and open a PR to add yourself to the team gallery.</p></div></a>
+</div>
+<div class="foot"><b>$</b> git workshop · design team · branch main</div>
+</div></div>
+</body>
 </html>

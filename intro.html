@@ -1,228 +1,61 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Intro — Git &amp; GitHub Workshop</title>
-    <style>
-      * { box-sizing: border-box; margin: 0; padding: 0; }
-
-      body {
-        font-family: monospace;
-        background: #0D1117;
-        color: #E6EDF3;
-        min-height: 100vh;
-        padding: 60px 24px;
-      }
-
-      .container { max-width: 760px; margin: 0 auto; }
-
-      .back {
-        display: inline-block;
-        font-size: 0.82rem;
-        color: #8B949E;
-        text-decoration: none;
-        margin-bottom: 40px;
-        transition: color 0.15s;
-      }
-      .back:hover { color: #39D353; }
-
-      /* ── Header ── */
-      .header { margin-bottom: 56px; }
-      .header .label { font-size: 0.78rem; color: #39D353; letter-spacing: 0.12em; text-transform: uppercase; margin-bottom: 14px; }
-      .header h1 { font-size: clamp(1.8rem, 5vw, 2.6rem); font-weight: 700; color: #E6EDF3; margin-bottom: 12px; line-height: 1.2; }
-      .header p { font-size: 0.9rem; color: #8B949E; line-height: 1.7; max-width: 560px; }
-
-      /* ── Section ── */
-      .section { margin-bottom: 56px; }
-      .section-label { font-size: 0.72rem; color: #58A6FF; letter-spacing: 0.12em; text-transform: uppercase; margin-bottom: 20px; }
-      .section h2 { font-size: 1.2rem; font-weight: 700; color: #E6EDF3; margin-bottom: 12px; }
-
-      /* ── Git vs GitHub ── */
-      .split { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
-      @media (max-width: 560px) { .split { grid-template-columns: 1fr; } }
-
-      .box {
-        background: #161B22;
-        border-radius: 10px;
-        padding: 24px;
-      }
-      .box.green { border: 1.5px solid #39D353; }
-      .box.blue  { border: 1.5px solid #58A6FF; }
-
-      .box .box-title { font-size: 0.95rem; font-weight: 700; margin-bottom: 16px; }
-      .box.green .box-title { color: #39D353; }
-      .box.blue  .box-title { color: #58A6FF; }
-
-      .box ul { list-style: none; }
-      .box ul li { font-size: 0.88rem; color: #8B949E; line-height: 1.6; padding: 5px 0; border-bottom: 1px solid #2D333B; }
-      .box ul li:last-child { border-bottom: none; }
-      .box ul li::before { content: "> "; color: #39D353; }
-      .box.blue ul li::before { color: #58A6FF; }
-
-      /* ── Key Terms ── */
-      .terms { display: grid; grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); gap: 12px; }
-
-      .term {
-        background: #161B22;
-        border-radius: 8px;
-        padding: 16px;
-      }
-      .term.g { border: 1.5px solid #39D353; }
-      .term.b { border: 1.5px solid #58A6FF; }
-
-      .term .term-name { font-size: 0.95rem; font-weight: 700; margin-bottom: 6px; }
-      .term.g .term-name { color: #39D353; }
-      .term.b .term-name { color: #58A6FF; }
-      .term .term-def { font-size: 0.8rem; color: #8B949E; line-height: 1.5; }
-
-      /* ── Workflow ── */
-      .flow { display: flex; align-items: center; flex-wrap: wrap; gap: 8px; }
-      .flow-step {
-        background: #161B22;
-        border-radius: 8px;
-        padding: 10px 16px;
-        font-size: 0.88rem;
-        font-weight: 700;
-      }
-      .flow-step.g { border: 1.5px solid #39D353; color: #39D353; }
-      .flow-step.b { border: 1.5px solid #58A6FF; color: #58A6FF; }
-      .flow-step.w { border: 1.5px solid #8B949E; color: #E6EDF3; }
-      .flow-arrow { color: #2D333B; font-size: 1rem; }
-
-      /* ── Concepts callout ── */
-      .callout {
-        background: #161B22;
-        border-left: 3px solid #FFA657;
-        border-radius: 6px;
-        padding: 16px 20px;
-        font-size: 0.88rem;
-        color: #8B949E;
-        line-height: 1.7;
-        margin-top: 16px;
-      }
-      .callout strong { color: #FFA657; }
-
-      /* ── Next CTA ── */
-      .next {
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        gap: 16px;
-        background: #161B22;
-        border: 1.5px solid #39D353;
-        border-radius: 10px;
-        padding: 24px;
-        text-decoration: none;
-        margin-top: 56px;
-        transition: transform 0.15s;
-      }
-      .next:hover { transform: translateY(-2px); }
-      .next .next-label { font-size: 0.72rem; color: #39D353; letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 4px; }
-      .next h3 { font-size: 1rem; color: #E6EDF3; font-weight: 700; }
-      .next .arrow { font-size: 1.4rem; color: #39D353; }
-    </style>
-  </head>
-  <body>
-    <div class="container">
-
-      <a class="back" href="index.html">← back to workshop</a>
-
-      <div class="header">
-        <div class="label">// intro · 0:00 → 0:05</div>
-        <h1>Before we touch<br>a single command</h1>
-        <p>Two minutes of context that will make everything else make sense.</p>
-      </div>
-
-      <!-- Git vs GitHub -->
-      <div class="section">
-        <div class="section-label">// 01 · the difference</div>
-        <div class="split">
-          <div class="box green">
-            <div class="box-title">git → local tool</div>
-            <ul>
-              <li>lives on your machine</li>
-              <li>tracks changes over time</li>
-              <li>works completely offline</li>
-            </ul>
-          </div>
-          <div class="box blue">
-            <div class="box-title">github → cloud host</div>
-            <ul>
-              <li>stores your repos online</li>
-              <li>enables team collaboration</li>
-              <li>pull requests live here</li>
-            </ul>
-          </div>
-        </div>
-        <div class="callout">
-          <strong>Analogy:</strong> Git is the version control software on your computer. GitHub is the website where you back it up and share it — like Google Drive, but built for code.
-        </div>
-      </div>
-
-      <!-- Key Terms -->
-      <div class="section">
-        <div class="section-label">// 02 · four words you need</div>
-        <div class="terms">
-          <div class="term g">
-            <div class="term-name">repo</div>
-            <div class="term-def">the project folder — everything Git is tracking</div>
-          </div>
-          <div class="term g">
-            <div class="term-name">commit</div>
-            <div class="term-def">a saved snapshot of your files at a point in time</div>
-          </div>
-          <div class="term b">
-            <div class="term-name">branch</div>
-            <div class="term-def">a parallel version — changes stay isolated from main</div>
-          </div>
-          <div class="term b">
-            <div class="term-name">PR</div>
-            <div class="term-def">a proposal to merge a branch back into main</div>
-          </div>
-        </div>
-        <div class="callout">
-          <strong>Don't worry</strong> if these feel abstract — they'll click once you've done the exercises.
-        </div>
-      </div>
-
-      <!-- The Loop -->
-      <div class="section">
-        <div class="section-label">// 03 · the workflow</div>
-        <p style="font-size:0.88rem; color:#8B949E; margin-bottom:20px; line-height:1.6;">Everything you do in Git follows this same loop. Today you'll run through it end to end.</p>
-        <div class="flow">
-          <span class="flow-step g">fork</span>
-          <span class="flow-arrow">→</span>
-          <span class="flow-step g">clone</span>
-          <span class="flow-arrow">→</span>
-          <span class="flow-step b">branch</span>
-          <span class="flow-arrow">→</span>
-          <span class="flow-step w">edit</span>
-          <span class="flow-arrow">→</span>
-          <span class="flow-step g">commit</span>
-          <span class="flow-arrow">→</span>
-          <span class="flow-step g">push</span>
-          <span class="flow-arrow">→</span>
-          <span class="flow-step b">PR</span>
-        </div>
-        <div class="callout" style="margin-top:20px;">
-          <strong>fork</strong> — copy the repo to your GitHub account<br>
-          <strong>clone</strong> — download it to your machine<br>
-          <strong>branch</strong> — create a safe workspace<br>
-          <strong>edit → commit → push</strong> — the core loop, repeated<br>
-          <strong>PR</strong> — propose your changes to the team
-        </div>
-      </div>
-
-      <!-- CTA to first exercise -->
-      <a class="next" href="ex1.html">
-        <div>
-          <div class="next-label">up next</div>
-          <h3>Exercise 1 — Fork &amp; Clone</h3>
-        </div>
-        <span class="arrow">→</span>
-      </a>
-
-    </div>
-  </body>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Intro — Git & GitHub Workshop</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="workshop.css">
+<style>
+.split{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:16px}
+.box{background:#FBF6EA;border:2px solid #17150F;border-radius:12px;padding:22px 22px 8px;box-shadow:4px 4px 0 #17150F}
+.box.cloud{box-shadow:4px 4px 0 #2438E0}
+.bt{font-family:'Space Mono',monospace;font-size:13px;font-weight:700;letter-spacing:.02em;margin-bottom:14px}
+.cloud .bt{color:#2438E0}
+.box ul{list-style:none;margin:0;padding:0}
+.box li{font-size:13.5px;color:#5a5544;line-height:1.5;padding:8px 0;border-top:1px solid rgba(23,21,15,.1);font-weight:500;display:flex;gap:9px}
+.box li:first-child{border-top:none}
+.mk{font-family:'Space Mono',monospace;font-weight:700;flex-shrink:0}
+.local .mk{color:#17150F}
+.cloud .mk{color:#2438E0}
+.terms{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:16px}
+.term{background:#FBF6EA;border:2px solid #17150F;border-radius:10px;padding:16px 18px}
+.tname{font-family:'Space Mono',monospace;font-size:15px;font-weight:700;color:#2438E0;margin-bottom:5px}
+.tdef{font-size:13px;color:#5a5544;line-height:1.5;font-weight:500}
+.flow{display:flex;flex-wrap:wrap;align-items:center;gap:9px}
+.chip{font-family:'Space Mono',monospace;font-size:13px;font-weight:700;border:2px solid #17150F;border-radius:7px;padding:8px 13px;background:#FBF6EA}
+.chip.key{background:#2438E0;border-color:#2438E0;color:#fff}
+.farrow{color:#2438E0;font-family:'Space Mono',monospace;font-weight:700}
+</style>
+</head>
+<body>
+<div class="wrap"><div class="shell">
+<a class="back" href="index.html">← back to workshop</a>
+<div class="kick">intro · 0:00 → 0:05</div>
+<h1>Before we touch<br>a single <mark>command</mark></h1>
+<p class="lead">Two minutes of context that will make everything else make sense.</p>
+<div class="sec">01 · the difference</div>
+<div class="split">
+<div class="box local"><div class="bt">git → local tool</div><ul><li><span class="mk">›</span>lives on your machine</li><li><span class="mk">›</span>tracks changes over time</li><li><span class="mk">›</span>works completely offline</li></ul></div>
+<div class="box cloud"><div class="bt">github → cloud host</div><ul><li><span class="mk">›</span>stores your repos online</li><li><span class="mk">›</span>enables team collaboration</li><li><span class="mk">›</span>pull requests live here</li></ul></div>
+</div>
+<div class="note ok"><strong>Analogy —</strong> Git is the version-control software on your computer. GitHub is the website where you back it up and share it: like Google Drive, but built for code.</div>
+<div class="sec">02 · four words you need</div>
+<div class="terms">
+<div class="term"><div class="tname">repo</div><div class="tdef">the project folder — everything Git is tracking</div></div>
+<div class="term"><div class="tname">commit</div><div class="tdef">a saved snapshot of your files at a point in time</div></div>
+<div class="term"><div class="tname">branch</div><div class="tdef">a parallel version — changes stay isolated from main</div></div>
+<div class="term"><div class="tname">PR</div><div class="tdef">a proposal to merge a branch back into main</div></div>
+</div>
+<div class="note"><strong>Don't worry</strong> if these feel abstract — they'll click once you've done the exercises.</div>
+<div class="sec">03 · the workflow</div>
+<p class="p">Everything you do in Git follows this same loop. Today you'll run through it end to end.</p>
+<div class="flow"><span class="chip key">fork</span><span class="farrow">→</span><span class="chip key">clone</span><span class="farrow">→</span><span class="chip">branch</span><span class="farrow">→</span><span class="chip">edit</span><span class="farrow">→</span><span class="chip key">commit</span><span class="farrow">→</span><span class="chip key">push</span><span class="farrow">→</span><span class="chip">PR</span></div>
+<div class="note ok"><strong>fork</strong> — copy the repo to your GitHub account<br><strong>clone</strong> — download it to your machine<br><strong>branch</strong> — create a safe workspace<br><strong>edit → commit → push</strong> — the core loop, repeated<br><strong>PR</strong> — propose your changes to the team</div>
+<a class="next" href="ex1.html"><div><div class="nx-label">up next</div><h3>Exercise 1 — Fork & Clone</h3></div><span class="nx-arrow">→</span></a>
+<div class="foot"><b>$</b> git workshop · intro</div>
+</div></div>
+</body>
 </html>

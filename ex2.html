@@ -1,147 +1,62 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Ex 2: Edit, Commit, Push — Git &amp; GitHub Workshop</title>
-    <style>
-      * { box-sizing: border-box; margin: 0; padding: 0; }
-      body { font-family: monospace; background: #0D1117; color: #E6EDF3; min-height: 100vh; padding: 60px 24px; }
-      .container { max-width: 680px; margin: 0 auto; }
-      .back { display: inline-block; font-size: 0.82rem; color: #8B949E; text-decoration: none; margin-bottom: 40px; transition: color 0.15s; }
-      .back:hover { color: #39D353; }
-      .label { font-size: 0.78rem; color: #39D353; letter-spacing: 0.12em; text-transform: uppercase; margin-bottom: 14px; }
-      h1 { font-size: 2rem; font-weight: 700; color: #E6EDF3; margin-bottom: 10px; }
-      .subtitle { font-size: 0.9rem; color: #8B949E; line-height: 1.65; margin-bottom: 40px; }
-      .badge { display: inline-block; background: #21262D; border: 1px solid #2D333B; border-radius: 20px; font-size: 0.72rem; color: #8B949E; padding: 3px 10px; margin-bottom: 20px; }
-      .section-label { font-size: 0.72rem; color: #58A6FF; letter-spacing: 0.12em; text-transform: uppercase; margin: 36px 0 16px; }
-      .steps { display: flex; flex-direction: column; }
-      .step { display: flex; gap: 20px; padding: 20px 0; border-bottom: 1px solid #2D333B; }
-      .step:last-child { border-bottom: none; }
-      .step-num { flex-shrink: 0; width: 28px; height: 28px; border-radius: 50%; background: #161B22; border: 1.5px solid #39D353; font-size: 0.8rem; font-weight: 700; color: #39D353; display: flex; align-items: center; justify-content: center; margin-top: 2px; }
-      .step-body h2 { font-size: 0.95rem; color: #E6EDF3; font-weight: 700; margin-bottom: 6px; }
-      .step-body p { font-size: 0.88rem; color: #8B949E; line-height: 1.6; margin-bottom: 8px; }
-      .step-body p:last-child { margin-bottom: 0; }
-      code { display: block; position: relative; background: #161B22; border: 1px solid #2D333B; border-radius: 8px; font-family: monospace; font-size: 0.88rem; color: #39D353; padding: 12px 48px 12px 16px; margin: 8px 0; line-height: 2; }
-      .inline { display: inline; background: #161B22; border: 1px solid #2D333B; border-radius: 4px; padding: 1px 6px; font-size: 0.85em; color: #58A6FF; }
-      .note { background: #161B22; border-left: 3px solid #FFA657; border-radius: 6px; padding: 12px 16px; font-size: 0.85rem; color: #8B949E; line-height: 1.6; margin: 8px 0; }
-      .note strong { color: #FFA657; }
-      .success { background: #161B22; border-left: 3px solid #39D353; border-radius: 6px; padding: 12px 16px; font-size: 0.85rem; color: #8B949E; line-height: 1.6; margin: 8px 0; }
-      .success strong { color: #39D353; }
-      .explore-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-top: 8px; }
-      .explore-item { background: #161B22; border: 1px solid #2D333B; border-radius: 8px; padding: 14px; }
-      .explore-item .var { font-size: 0.82rem; color: #FFA657; margin-bottom: 4px; }
-      .explore-item .hint { font-size: 0.78rem; color: #8B949E; }
-
-      /* ── Tooltips ── */
-      .tt { position: relative; cursor: help; border-bottom: 1px dashed rgba(57,211,83,0.4); display: inline-block; }
-      .tt::after { content: attr(data-tip); position: absolute; bottom: calc(100% + 7px); left: 50%; transform: translateX(-50%); background: #21262D; border: 1px solid #39D353; border-radius: 6px; padding: 5px 10px; font-size: 0.72rem; color: #E6EDF3; white-space: nowrap; pointer-events: none; opacity: 0; transition: opacity 0.15s; z-index: 100; }
-      .tt:hover::after { opacity: 1; }
-
-      /* ── Copy button ── */
-      .copy-btn { position: absolute; top: 8px; right: 8px; background: #21262D; border: 1px solid #2D333B; border-radius: 4px; color: #8B949E; font-size: 0.7rem; font-family: monospace; padding: 3px 7px; cursor: pointer; transition: color 0.15s, border-color 0.15s; }
-      .copy-btn:hover { color: #39D353; border-color: #39D353; }
-    </style>
-  </head>
-  <body>
-    <div class="container">
-      <a class="back" href="index.html">← back to workshop</a>
-      <div class="label">// ex.02</div>
-      <h1>Edit · Commit · Push</h1>
-      <span class="badge">0:15 → 0:32</span>
-      <p class="subtitle">Make changes to the Hello World page, save a snapshot with Git, and upload it to GitHub. This is the core loop you'll use every day.</p>
-
-      <div class="section-label">// part 1 — follow along</div>
-      <div class="steps">
-
-        <div class="step">
-          <div class="step-num">1</div>
-          <div class="step-body">
-            <h2>Edit your name in index.html</h2>
-            <p>Open <span class="inline">index.html</span> in a text editor. Find the <span class="inline">&lt;h1&gt;</span> tag and replace the name with yours.</p>
-          </div>
-        </div>
-
-        <div class="step">
-          <div class="step-num">2</div>
-          <div class="step-body">
-            <h2>Change the background color in style.css</h2>
-            <p>Open <span class="inline">style.css</span>. Near the top, find the <span class="inline">--background-color</span> variable and change its value.</p>
-            <div class="note"><strong>Tip:</strong> Try <span class="inline">#1a1a2e</span>, <span class="inline">#f0f4f8</span>, or any hex color you like.</div>
-          </div>
-        </div>
-
-        <div class="step">
-          <div class="step-num">3</div>
-          <div class="step-body">
-            <h2>Stage your changes</h2>
-            <code><span class="tt" data-tip="the git program">git</span> <span class="tt" data-tip="mark files as ready to be committed">add</span> <span class="tt" data-tip="shorthand for 'all changed files in this folder'">.</span></code>
-            <p>This marks all changed files as ready to commit.</p>
-          </div>
-        </div>
-
-        <div class="step">
-          <div class="step-num">4</div>
-          <div class="step-body">
-            <h2>Commit with a message</h2>
-            <code><span class="tt" data-tip="the git program">git</span> <span class="tt" data-tip="save a snapshot of all staged changes">commit</span> <span class="tt" data-tip="flag: attach a message to this commit">-m</span> <span class="tt" data-tip="describe what changed — be specific">"Add my name and bg color"</span></code>
-            <p>The message is a note to your future self. Make it descriptive.</p>
-          </div>
-        </div>
-
-        <div class="step">
-          <div class="step-num">5</div>
-          <div class="step-body">
-            <h2>Push to GitHub</h2>
-            <code><span class="tt" data-tip="the git program">git</span> <span class="tt" data-tip="upload your local commits to GitHub">push</span></code>
-            <div class="success"><strong>Verify:</strong> Go to your fork on GitHub — you should see the commit message next to the changed files.</div>
-          </div>
-        </div>
-
-      </div>
-
-      <div class="section-label">// part 2 — free explore (5 min)</div>
-      <p style="font-size:0.88rem; color:#8B949E; margin-bottom:16px; line-height:1.6;">Try changing more CSS variables. After each change: <strong style="color:#39D353">add · commit · push</strong>.</p>
-
-      <div class="explore-grid">
-        <div class="explore-item">
-          <div class="var">--button-color</div>
-          <div class="hint">Try any hex color</div>
-        </div>
-        <div class="explore-item">
-          <div class="var">--font-family</div>
-          <div class="hint">Georgia, monospace, cursive</div>
-        </div>
-        <div class="explore-item">
-          <div class="var">--border-radius</div>
-          <div class="hint">0px, 8px, 32px</div>
-        </div>
-        <div class="explore-item">
-          <div class="var">--heading-color</div>
-          <div class="hint">Try any hex color</div>
-        </div>
-      </div>
-
-    </div>
-    <script>
-      document.querySelectorAll('code').forEach(function(block) {
-        var command = block.innerText.trim();
-        var btn = document.createElement('button');
-        btn.className = 'copy-btn';
-        btn.textContent = 'copy';
-        btn.addEventListener('click', function() {
-          navigator.clipboard.writeText(command);
-          btn.textContent = 'copied!';
-          btn.style.color = '#39D353';
-          btn.style.borderColor = '#39D353';
-          setTimeout(function() {
-            btn.textContent = 'copy';
-            btn.style.color = '';
-            btn.style.borderColor = '';
-          }, 1500);
-        });
-        block.appendChild(btn);
-      });
-    </script>
-  </body>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Ex 2 — Edit · Commit · Push</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="workshop.css">
+<style>
+.explore{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:6px}
+.exitem{background:#FBF6EA;border:2px solid #17150F;border-radius:10px;padding:15px 16px}
+.exvar{font-family:'Space Mono',monospace;font-size:13px;font-weight:700;color:#2438E0;margin-bottom:4px}
+.exhint{font-size:12.5px;color:#5a5544;font-weight:500}
+</style>
+</head>
+<body>
+<div class="wrap"><div class="shell">
+<a class="back" href="index.html">← back to workshop</a>
+<div class="kick">ex.02</div>
+<h1>Edit · Commit<br>· <mark>Push</mark></h1>
+<div class="badge" style="margin-top:16px">0:15 → 0:32</div>
+<p class="lead">Make changes to the Hello World page, save a snapshot with Git, and upload it to GitHub. This is the core loop you'll use every day.</p>
+<div class="sec">part 1 — follow along</div>
+<div class="steps">
+<div class="step"><div class="step-num">1</div><div class="step-body"><h2>Edit your name in index.html</h2><p>Open <span class="inline">index.html</span> in a text editor. Find the <span class="inline">&lt;h1&gt;</span> tag and replace the name with yours.</p></div></div>
+<div class="step"><div class="step-num">2</div><div class="step-body"><h2>Change the background color in style.css</h2><p>Open <span class="inline">style.css</span>. Near the top, find the <span class="inline">--background-color</span> variable and change its value.</p><div class="note"><strong>Tip —</strong> Try <span class="inline">#1a1a2e</span>, <span class="inline">#f0f4f8</span>, or any hex you like.</div></div></div>
+<div class="step"><div class="step-num">3</div><div class="step-body"><h2>Stage your changes</h2><div class="code"><span class="tt" data-tip="the git program">git</span> <span class="tt" data-tip="mark files as ready to be committed">add</span> <span class="tt" data-tip="shorthand for 'all changed files'">.</span></div><p>This marks all changed files as ready to commit.</p></div></div>
+<div class="step"><div class="step-num">4</div><div class="step-body"><h2>Commit with a message</h2><div class="code"><span class="tt" data-tip="the git program">git</span> <span class="tt" data-tip="save a snapshot of staged changes">commit</span> <span class="tt" data-tip="flag: attach a message">-m</span> <span class="tt" data-tip="describe what changed — be specific">"Add my name and bg color"</span></div><p>The message is a note to your future self. Make it descriptive.</p></div></div>
+<div class="step"><div class="step-num">5</div><div class="step-body"><h2>Push to GitHub</h2><div class="code"><span class="tt" data-tip="the git program">git</span> <span class="tt" data-tip="upload your local commits to GitHub">push</span></div><div class="note ok"><strong>Verify —</strong> Go to your fork on GitHub; you should see the commit message next to the changed files.</div></div></div>
+</div>
+<div class="sec">part 2 — free explore (5 min)</div>
+<p class="p">Try changing more CSS variables. After each change: <strong style="color:#2438E0">add · commit · push</strong>.</p>
+<div class="explore">
+<div class="exitem"><div class="exvar">--button-color</div><div class="exhint">Try any hex color</div></div>
+<div class="exitem"><div class="exvar">--font-family</div><div class="exhint">Georgia, monospace, cursive</div></div>
+<div class="exitem"><div class="exvar">--border-radius</div><div class="exhint">0px, 8px, 32px</div></div>
+<div class="exitem"><div class="exvar">--heading-color</div><div class="exhint">Try any hex color</div></div>
+</div>
+<a class="next" href="ex3.html"><div><div class="nx-label">up next</div><h3>Exercise 3 — Branch & Pull Request</h3></div><span class="nx-arrow">→</span></a>
+<div class="foot"><b>$</b> git workshop · ex.02</div>
+</div></div>
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  document.querySelectorAll('.code').forEach(function(block) {
+    if (block.querySelector('.copy-btn')) return;
+    var cmd = block.innerText.trim();
+    var btn = document.createElement('button');
+    btn.className = 'copy-btn';
+    btn.textContent = 'copy';
+    btn.addEventListener('click', function() {
+      navigator.clipboard && navigator.clipboard.writeText(cmd);
+      btn.textContent = 'copied!';
+      setTimeout(function() { btn.textContent = 'copy'; }, 1500);
+    });
+    block.appendChild(btn);
+  });
+});
+</script>
+</body>
 </html>

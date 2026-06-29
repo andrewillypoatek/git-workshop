@@ -1,190 +1,56 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Cheatsheet — Git &amp; GitHub Workshop</title>
-    <style>
-      * { box-sizing: border-box; margin: 0; padding: 0; }
-
-      body {
-        font-family: sans-serif;
-        background: #f5f5f5;
-        color: #222;
-        padding: 40px 24px;
-      }
-
-      header {
-        max-width: 760px;
-        margin: 0 auto 40px;
-      }
-
-      header h1 {
-        font-size: 1.8rem;
-        color: #3a3af4;
-        margin-bottom: 6px;
-      }
-
-      header p {
-        color: #888;
-        font-size: 0.95rem;
-      }
-
-      .grid {
-        max-width: 760px;
-        margin: 0 auto;
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        gap: 20px;
-      }
-
-      @media (max-width: 600px) {
-        .grid { grid-template-columns: 1fr; }
-      }
-
-      .card {
-        background: #fff;
-        border-radius: 12px;
-        padding: 24px;
-        box-shadow: 0 2px 12px rgba(0,0,0,0.07);
-      }
-
-      .card h2 {
-        font-size: 0.75rem;
-        font-weight: 700;
-        letter-spacing: 0.1em;
-        text-transform: uppercase;
-        color: #3a3af4;
-        margin-bottom: 16px;
-        padding-bottom: 10px;
-        border-bottom: 2px solid #ececff;
-      }
-
-      .command {
-        margin-bottom: 16px;
-      }
-
-      .command:last-child {
-        margin-bottom: 0;
-      }
-
-      code {
-        display: inline-block;
-        background: #f0f0ff;
-        color: #2222cc;
-        font-family: monospace;
-        font-size: 0.88rem;
-        padding: 4px 8px;
-        border-radius: 6px;
-        margin-bottom: 4px;
-      }
-
-      .command p {
-        font-size: 0.85rem;
-        color: #555;
-        line-height: 1.5;
-        margin-top: 4px;
-      }
-
-      .note {
-        max-width: 760px;
-        margin: 24px auto 0;
-        background: #fffbea;
-        border-left: 4px solid #f0c040;
-        border-radius: 8px;
-        padding: 16px 20px;
-        font-size: 0.88rem;
-        color: #555;
-        line-height: 1.6;
-      }
-
-      .note strong {
-        color: #333;
-      }
-    </style>
-  </head>
-  <body>
-
-    <header>
-      <h1>Git Cheatsheet</h1>
-      <p>Git/GitHub Workshop — keep this open during the exercises</p>
-    </header>
-
-    <div class="grid">
-
-      <div class="card">
-        <h2>Exercise 1 — Fork &amp; Clone</h2>
-        <div class="command">
-          <code>git clone &lt;url&gt; hello-world</code>
-          <p>Download a repository from GitHub to your machine. Use the <strong>SSH</strong> URL (starts with <code>git@github.com:</code>), not HTTPS. The <code>hello-world</code> at the end names the local folder.</p>
-        </div>
-        <div class="command">
-          <code>cd &lt;folder-name&gt;</code>
-          <p>Navigate into the cloned folder.</p>
-        </div>
-        <div class="command">
-          <code>git status</code>
-          <p>See the current state of your repo. Run this whenever you're unsure.</p>
-        </div>
-      </div>
-
-      <div class="card">
-        <h2>Exercise 2 — Edit, Commit, Push</h2>
-        <div class="command">
-          <code>git add .</code>
-          <p>Stage all changed files, ready to be committed.</p>
-        </div>
-        <div class="command">
-          <code>git add &lt;filename&gt;</code>
-          <p>Stage a specific file only.</p>
-        </div>
-        <div class="command">
-          <code>git commit -m "your message"</code>
-          <p>Save a snapshot with a description of what changed.</p>
-        </div>
-        <div class="command">
-          <code>git push</code>
-          <p>Upload your commits to GitHub.</p>
-        </div>
-      </div>
-
-      <div class="card">
-        <h2>Exercise 3 — Branch &amp; PR</h2>
-        <div class="command">
-          <code>git checkout -b &lt;branch-name&gt;</code>
-          <p>Create a new branch and switch to it. Use <code>feature/your-name</code> as the name.</p>
-        </div>
-        <div class="command">
-          <code>git branch</code>
-          <p>List all branches. The active one is marked with <code>*</code>.</p>
-        </div>
-        <div class="command">
-          <code>git push -u origin &lt;branch-name&gt;</code>
-          <p>Push a new branch to GitHub for the first time.</p>
-        </div>
-      </div>
-
-      <div class="card">
-        <h2>Good to know</h2>
-        <div class="command">
-          <code>git log --oneline</code>
-          <p>See the commit history in a compact view.</p>
-        </div>
-        <div class="command">
-          <code>git diff</code>
-          <p>See exactly what changed since your last commit.</p>
-        </div>
-        <div class="command">
-          <code>git pull</code>
-          <p>Download and apply the latest changes from GitHub.</p>
-        </div>
-      </div>
-
-    </div>
-
-    <div class="note">
-      <strong>Tip:</strong> Run <code>git status</code> constantly — before and after every step. It's the best way to understand where you are.
-    </div>
-
-  </body>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Cheatsheet — Git & GitHub Workshop</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="workshop.css">
+<style>
+.ccards{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.ccard{background:#FBF6EA;border:2px solid #17150F;border-radius:12px;padding:22px 22px 8px;box-shadow:4px 4px 0 #17150F}
+.ch{font-family:'Space Mono',monospace;font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:#2438E0;margin-bottom:14px;padding-bottom:11px;border-bottom:2px solid rgba(36,56,224,.18)}
+.cmd{padding:0 0 16px}
+.csyn{display:inline-block;font-family:'Space Mono',monospace;font-size:13px;font-weight:700;background:#17150F;color:#F4ECD8;border-radius:6px;padding:5px 10px;margin-bottom:7px}
+.cmd p{font-size:12.5px;color:#5a5544;line-height:1.5;margin:0;font-weight:500}
+.cmd p code{font-family:'Space Mono',monospace;font-size:.9em;background:#e7ddc6;color:#2438E0;border-radius:3px;padding:1px 5px}
+@media(max-width:620px){.ccards{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<div class="wrap"><div class="shell">
+<a class="back" href="index.html">← back to workshop</a>
+<div class="kick">cheatsheet · keep this open</div>
+<h1>Git <mark>commands</mark>,<br>all in one place</h1>
+<p class="lead">Every command you'll touch during the exercises. Bookmark it and keep it open in a tab.</p>
+<div class="sec">the commands</div>
+<div class="ccards">
+<div class="ccard"><div class="ch">Ex 1 — Fork & Clone</div>
+<div class="cmd"><span class="csyn">git clone &lt;url&gt; hello-world</span><p>Download a repo from GitHub. Use the <strong>SSH</strong> URL (starts with <code>git@github.com:</code>), not HTTPS. The last word names the local folder.</p></div>
+<div class="cmd"><span class="csyn">cd &lt;folder-name&gt;</span><p>Navigate into the cloned folder.</p></div>
+<div class="cmd"><span class="csyn">git status</span><p>See the current state of your repo. Run it whenever you're unsure.</p></div>
+</div>
+<div class="ccard"><div class="ch">Ex 2 — Edit, Commit, Push</div>
+<div class="cmd"><span class="csyn">git add .</span><p>Stage all changed files, ready to commit.</p></div>
+<div class="cmd"><span class="csyn">git add &lt;filename&gt;</span><p>Stage a specific file only.</p></div>
+<div class="cmd"><span class="csyn">git commit -m "message"</span><p>Save a snapshot with a description of what changed.</p></div>
+<div class="cmd"><span class="csyn">git push</span><p>Upload your commits to GitHub.</p></div>
+</div>
+<div class="ccard"><div class="ch">Ex 3 — Branch & PR</div>
+<div class="cmd"><span class="csyn">git checkout -b &lt;name&gt;</span><p>Create a branch and switch to it. Use <code>feature/your-name</code>.</p></div>
+<div class="cmd"><span class="csyn">git branch</span><p>List all branches. The active one is marked with <code>*</code>.</p></div>
+<div class="cmd"><span class="csyn">git push -u origin &lt;name&gt;</span><p>Push a new branch to GitHub for the first time.</p></div>
+</div>
+<div class="ccard"><div class="ch">Good to know</div>
+<div class="cmd"><span class="csyn">git log --oneline</span><p>See the commit history in a compact view.</p></div>
+<div class="cmd"><span class="csyn">git diff</span><p>See exactly what changed since your last commit.</p></div>
+<div class="cmd"><span class="csyn">git pull</span><p>Download and apply the latest changes from GitHub.</p></div>
+</div>
+</div>
+<div class="note ok"><strong>Tip —</strong> Run <span class="inline">git status</span> constantly, before and after every step. It's the fastest way to understand where you are.</div>
+<div class="foot"><b>$</b> git workshop · cheatsheet</div>
+</div></div>
+</body>
 </html>

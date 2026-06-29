@@ -1,130 +1,55 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Ex 1: Fork &amp; Clone — Git &amp; GitHub Workshop</title>
-    <style>
-      * { box-sizing: border-box; margin: 0; padding: 0; }
-      body { font-family: monospace; background: #0D1117; color: #E6EDF3; min-height: 100vh; padding: 60px 24px; }
-      .container { max-width: 680px; margin: 0 auto; }
-      .back { display: inline-block; font-size: 0.82rem; color: #8B949E; text-decoration: none; margin-bottom: 40px; transition: color 0.15s; }
-      .back:hover { color: #39D353; }
-      .label { font-size: 0.78rem; color: #39D353; letter-spacing: 0.12em; text-transform: uppercase; margin-bottom: 14px; }
-      h1 { font-size: 2rem; font-weight: 700; color: #E6EDF3; margin-bottom: 10px; }
-      .subtitle { font-size: 0.9rem; color: #8B949E; line-height: 1.65; margin-bottom: 40px; }
-      .repo-box { background: #161B22; border: 1.5px solid #58A6FF; border-radius: 10px; padding: 20px 24px; margin-bottom: 40px; display: flex; align-items: center; justify-content: space-between; gap: 16px; flex-wrap: wrap; }
-      .repo-box .repo-label { font-size: 0.72rem; color: #8B949E; letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 6px; }
-      .repo-box .repo-name { font-size: 0.95rem; color: #58A6FF; font-weight: 700; }
-      .repo-box a { display: inline-block; background: #58A6FF; color: #0D1117; font-family: monospace; font-size: 0.82rem; font-weight: 700; padding: 8px 16px; border-radius: 6px; text-decoration: none; white-space: nowrap; }
-      .repo-box a:hover { background: #79BEFF; }
-      .steps { display: flex; flex-direction: column; gap: 0; }
-      .step { display: flex; gap: 20px; padding: 20px 0; border-bottom: 1px solid #2D333B; }
-      .step:last-child { border-bottom: none; }
-      .step-num { flex-shrink: 0; width: 28px; height: 28px; border-radius: 50%; background: #161B22; border: 1.5px solid #39D353; font-size: 0.8rem; font-weight: 700; color: #39D353; display: flex; align-items: center; justify-content: center; margin-top: 2px; }
-      .step-body h2 { font-size: 0.95rem; color: #E6EDF3; font-weight: 700; margin-bottom: 6px; }
-      .step-body p { font-size: 0.88rem; color: #8B949E; line-height: 1.6; margin-bottom: 8px; }
-      .step-body p:last-child { margin-bottom: 0; }
-      code { display: block; position: relative; background: #161B22; border: 1px solid #2D333B; border-radius: 8px; font-family: monospace; font-size: 0.88rem; color: #39D353; padding: 12px 48px 12px 16px; margin: 8px 0; line-height: 2; }
-      .inline { display: inline; background: #161B22; border: 1px solid #2D333B; border-radius: 4px; padding: 1px 6px; font-size: 0.85em; color: #58A6FF; }
-      .note { background: #161B22; border-left: 3px solid #FFA657; border-radius: 6px; padding: 12px 16px; font-size: 0.85rem; color: #8B949E; line-height: 1.6; margin: 8px 0; }
-      .note strong { color: #FFA657; }
-      .badge { display: inline-block; background: #21262D; border: 1px solid #2D333B; border-radius: 20px; font-size: 0.72rem; color: #8B949E; padding: 3px 10px; margin-bottom: 20px; }
-
-      /* ── Tooltips ── */
-      .tt { position: relative; cursor: help; border-bottom: 1px dashed rgba(57,211,83,0.4); display: inline-block; }
-      .tt::after { content: attr(data-tip); position: absolute; bottom: calc(100% + 7px); left: 50%; transform: translateX(-50%); background: #21262D; border: 1px solid #39D353; border-radius: 6px; padding: 5px 10px; font-size: 0.72rem; color: #E6EDF3; white-space: nowrap; pointer-events: none; opacity: 0; transition: opacity 0.15s; z-index: 100; }
-      .tt:hover::after { opacity: 1; }
-
-      /* ── Copy button ── */
-      .copy-btn { position: absolute; top: 8px; right: 8px; background: #21262D; border: 1px solid #2D333B; border-radius: 4px; color: #8B949E; font-size: 0.7rem; font-family: monospace; padding: 3px 7px; cursor: pointer; transition: color 0.15s, border-color 0.15s; }
-      .copy-btn:hover { color: #39D353; border-color: #39D353; }
-    </style>
-  </head>
-  <body>
-    <div class="container">
-      <a class="back" href="index.html">← back to workshop</a>
-      <div class="label">// ex.01</div>
-      <h1>Fork &amp; Clone</h1>
-      <span class="badge">0:05 → 0:15</span>
-      <p class="subtitle">Get the instructor's code onto your machine. You'll fork it first (making your own copy on GitHub), then clone it locally.</p>
-
-      <div class="repo-box">
-        <div>
-          <div class="repo-label">Repo to fork</div>
-          <div class="repo-name">andrewillypoatek / learning-github</div>
-        </div>
-        <a href="https://github.com/andrewillypoatek/learning-github" target="_blank">Open on GitHub →</a>
-      </div>
-
-      <div class="steps">
-
-        <div class="step">
-          <div class="step-num">1</div>
-          <div class="step-body">
-            <h2>Fork the repo</h2>
-            <p>On the repo page, click <strong>Fork</strong> (top right). This creates your own copy under your GitHub account.</p>
-            <div class="note"><strong>Important:</strong> Clone your fork, not the instructor's repo. Your fork URL will have your username in it.</div>
-          </div>
-        </div>
-
-        <div class="step">
-          <div class="step-num">2</div>
-          <div class="step-body">
-            <h2>Copy the SSH URL</h2>
-            <p>On your fork, click the green <strong>Code</strong> button → select <strong>SSH</strong> → copy the URL. It should look like:</p>
-            <code><span class="tt" data-tip="SSH protocol — authenticates using your SSH key">git@github.com</span>:<span class="tt" data-tip="your GitHub username">YOUR-USERNAME</span>/<span class="tt" data-tip="the repo name">learning-github.git</span></code>
-          </div>
-        </div>
-
-        <div class="step">
-          <div class="step-num">3</div>
-          <div class="step-body">
-            <h2>Clone it locally</h2>
-            <p>In your terminal, navigate to where you want the folder, then run:</p>
-            <code><span class="tt" data-tip="the git program">git</span> <span class="tt" data-tip="download a remote repo to your machine">clone</span> <span class="tt" data-tip="SSH URL of your fork on GitHub">git@github.com:YOUR-USERNAME/learning-github.git</span> <span class="tt" data-tip="optional: custom name for the local folder">hello-world</span></code>
-            <p>The <span class="inline">hello-world</span> at the end names the local folder.</p>
-          </div>
-        </div>
-
-        <div class="step">
-          <div class="step-num">4</div>
-          <div class="step-body">
-            <h2>Enter the folder</h2>
-            <code><span class="tt" data-tip="change directory — navigate into a folder">cd</span> <span class="tt" data-tip="the folder we just cloned">hello-world</span></code>
-          </div>
-        </div>
-
-        <div class="step">
-          <div class="step-num">5</div>
-          <div class="step-body">
-            <h2>Check your status</h2>
-            <code><span class="tt" data-tip="the git program">git</span> <span class="tt" data-tip="show what's changed since the last commit">status</span></code>
-            <p>Should say "nothing to commit, working tree clean". Then open <span class="inline">index.html</span> in a browser — drag it into a window or double-click it in Finder.</p>
-          </div>
-        </div>
-
-      </div>
-    </div>
-    <script>
-      document.querySelectorAll('code').forEach(function(block) {
-        var command = block.innerText.trim();
-        var btn = document.createElement('button');
-        btn.className = 'copy-btn';
-        btn.textContent = 'copy';
-        btn.addEventListener('click', function() {
-          navigator.clipboard.writeText(command);
-          btn.textContent = 'copied!';
-          btn.style.color = '#39D353';
-          btn.style.borderColor = '#39D353';
-          setTimeout(function() {
-            btn.textContent = 'copy';
-            btn.style.color = '';
-            btn.style.borderColor = '';
-          }, 1500);
-        });
-        block.appendChild(btn);
-      });
-    </script>
-  </body>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Ex 1 — Fork & Clone</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="workshop.css">
+<style>
+.repo-box{background:#FBF6EA;border:2px solid #2438E0;border-radius:12px;box-shadow:4px 4px 0 #2438E0;padding:20px 24px;margin:8px 0 8px;display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap}
+.repo-label{font-family:'Space Mono',monospace;font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:#8a8266;margin-bottom:5px}
+.repo-name{font-family:'Space Mono',monospace;font-size:15px;color:#2438E0;font-weight:700}
+.repo-box a{display:inline-block;background:#2438E0;color:#fff;font-family:'Space Mono',monospace;font-size:13px;font-weight:700;padding:9px 16px;border-radius:7px;text-decoration:none;white-space:nowrap}
+.repo-box a:hover{background:#17150F}
+</style>
+</head>
+<body>
+<div class="wrap"><div class="shell">
+<a class="back" href="index.html">← back to workshop</a>
+<div class="kick">ex.01</div>
+<h1>Fork <mark>&</mark> Clone</h1>
+<div class="badge" style="margin-top:16px">0:05 → 0:15</div>
+<p class="lead">Get the instructor's code onto your machine. You'll fork it first (your own copy on GitHub), then clone it locally.</p>
+<div class="repo-box"><div><div class="repo-label">Repo to fork</div><div class="repo-name">andrewillypoatek / learning-github</div></div><a href="https://github.com/andrewillypoatek/learning-github" target="_blank">Open on GitHub →</a></div>
+<div class="steps">
+<div class="step"><div class="step-num">1</div><div class="step-body"><h2>Fork the repo</h2><p>On the repo page, click <strong>Fork</strong> (top right). This creates your own copy under your GitHub account.</p><div class="note"><strong>Important —</strong> Clone your fork, not the instructor's repo. Your fork URL has your username in it.</div></div></div>
+<div class="step"><div class="step-num">2</div><div class="step-body"><h2>Copy the SSH URL</h2><p>On your fork, click the green <strong>Code</strong> button → select <strong>SSH</strong> → copy the URL. It looks like:</p><div class="code"><span class="tt" data-tip="SSH protocol — authenticates with your SSH key">git@github.com</span>:<span class="tt" data-tip="your GitHub username">YOUR-USERNAME</span>/<span class="tt" data-tip="the repo name">learning-github.git</span></div></div></div>
+<div class="step"><div class="step-num">3</div><div class="step-body"><h2>Clone it locally</h2><p>In your terminal, navigate to where you want the folder, then run:</p><div class="code"><span class="tt" data-tip="the git program">git</span> <span class="tt" data-tip="download a remote repo to your machine">clone</span> <span class="tt" data-tip="SSH URL of your fork">git@github.com:YOUR-USERNAME/learning-github.git</span> <span class="tt" data-tip="optional: custom name for the local folder">hello-world</span></div><p>The <span class="inline">hello-world</span> at the end names the local folder.</p></div></div>
+<div class="step"><div class="step-num">4</div><div class="step-body"><h2>Enter the folder</h2><div class="code"><span class="tt" data-tip="change directory — navigate into a folder">cd</span> <span class="tt" data-tip="the folder we just cloned">hello-world</span></div></div></div>
+<div class="step"><div class="step-num">5</div><div class="step-body"><h2>Check your status</h2><div class="code"><span class="tt" data-tip="the git program">git</span> <span class="tt" data-tip="show what's changed since the last commit">status</span></div><p>Should say "nothing to commit, working tree clean". Then open <span class="inline">index.html</span> in a browser — double-click it in Finder.</p></div></div>
+</div>
+<a class="next" href="ex2.html"><div><div class="nx-label">up next</div><h3>Exercise 2 — Edit · Commit · Push</h3></div><span class="nx-arrow">→</span></a>
+<div class="foot"><b>$</b> git workshop · ex.01</div>
+</div></div>
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  document.querySelectorAll('.code').forEach(function(block) {
+    if (block.querySelector('.copy-btn')) return;
+    var cmd = block.innerText.trim();
+    var btn = document.createElement('button');
+    btn.className = 'copy-btn';
+    btn.textContent = 'copy';
+    btn.addEventListener('click', function() {
+      navigator.clipboard && navigator.clipboard.writeText(cmd);
+      btn.textContent = 'copied!';
+      setTimeout(function() { btn.textContent = 'copy'; }, 1500);
+    });
+    block.appendChild(btn);
+  });
+});
+</script>
+</body>
 </html>
