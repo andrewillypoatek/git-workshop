@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Setup — Git & GitHub Workshop</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="workshop.css">
+<link rel="icon" type="image/svg+xml" href="favicon.svg">
+</head>
+<body>
+<div class="wrap"><div class="shell">
+<a class="back" href="index.html">← back to workshop</a>
+<div class="kick">setup · in the workshop</div>
+<h1>Let's get <mark>set up</mark></h1>
+<p class="lead">Before we touch any code, we need Git configured and your machine connected to GitHub. Do this together — instructor leads, everyone follows.</p>
+<div class="sec">git & identity</div>
+<div class="steps">
+<div class="step"><div class="step-num">1</div><div class="step-body"><h2>Verify Git is installed</h2><p>Open <strong>Terminal</strong> (Spotlight → "Terminal") and run:</p><div class="code"><span class="tt" data-tip="the git program">git</span> <span class="tt" data-tip="print the installed version">--version</span></div><p>You should see something like <span class="inline">git version 2.x.x</span>.</p><div class="note"><strong>Nothing? —</strong> Mac will likely prompt you to install Xcode Command Line Tools. Click Install and wait — it takes a few minutes, then run the command again.</div></div></div>
+<div class="step"><div class="step-num">2</div><div class="step-body"><h2>Set your identity</h2><p>Tell Git your name and email. These appear on every commit you make.</p><div class="code"><span class="tt" data-tip="the git program">git</span> <span class="tt" data-tip="read or write a config setting">config</span> <span class="tt" data-tip="apply this to all repos on your machine">--global</span> <span class="tt" data-tip="your display name on commits">user.name</span> <span class="tt" data-tip="replace with your actual name">"Your Name"</span></div><div class="code"><span class="tt" data-tip="the git program">git</span> <span class="tt" data-tip="read or write a config setting">config</span> <span class="tt" data-tip="apply this to all repos on your machine">--global</span> <span class="tt" data-tip="the email that appears on your commits">user.email</span> <span class="tt" data-tip="use the same email as your GitHub account">"you@example.com"</span></div><p>Use the same email you signed up to GitHub with.</p></div></div>
+</div>
+<div class="sec">ssh key setup</div>
+<div class="steps">
+<div class="step"><div class="step-num">3</div><div class="step-body"><h2>Generate an SSH key</h2><p>SSH is how your machine proves its identity to GitHub — no password needed every time you push. Run (use your GitHub email):</p><div class="code"><span class="tt" data-tip="key generation tool">ssh-keygen</span> <span class="tt" data-tip="flag: set the key type">-t</span> <span class="tt" data-tip="modern, secure key algorithm">ed25519</span> <span class="tt" data-tip="flag: attach a label to the key">-C</span> <span class="tt" data-tip="your GitHub email — used as a label">"you@example.com"</span></div><p>When prompted:</p><p>• <strong>File location</strong> — press <span class="inline">Enter</span> (keep the default)<br>• <strong>Passphrase</strong> — press <span class="inline">Enter</span> twice (no passphrase)</p><div class="note ok"><strong>Expected —</strong> "Your identification has been saved in /Users/you/.ssh/id_ed25519"</div></div></div>
+<div class="step"><div class="step-num">4</div><div class="step-body"><h2>Copy your public key</h2><p>This copies the key to your clipboard so you can paste it into GitHub:</p><div class="code"><span class="tt" data-tip="copy output directly to clipboard (Mac built-in)">pbcopy</span> <span class="tt" data-tip="redirect file contents as input">&lt;</span> <span class="tt" data-tip="your public key file — safe to share, never share the one without .pub">~/.ssh/id_ed25519.pub</span></div><p>No output = it worked. The key is now in your clipboard.</p></div></div>
+<div class="step"><div class="step-num">5</div><div class="step-body"><h2>Add the key to GitHub</h2><p>Go to <a class="link" href="https://github.com/settings/keys" target="_blank">github.com/settings/keys</a> and click <strong>New SSH key</strong>.</p><p>• <strong>Title:</strong> MacBook (or any label that makes sense)<br>• <strong>Key type:</strong> Authentication Key (default)<br>• <strong>Key:</strong> paste with <span class="inline">⌘V</span></p><p>Click <strong>Add SSH key</strong>.</p></div></div>
+<div class="step"><div class="step-num">6</div><div class="step-body"><h2>Test the connection</h2><div class="code"><span class="tt" data-tip="secure shell — opens encrypted connections">ssh</span> <span class="tt" data-tip="flag: test the connection without opening a shell">-T</span> <span class="tt" data-tip="GitHub's SSH server">git@github.com</span></div><div class="note ok"><strong>Expected —</strong> "Hi YOUR-USERNAME! You've successfully authenticated, but GitHub does not provide shell access."</div><p>If you see your username in that message, you're connected. We're ready to go.</p></div></div>
+</div>
+<a class="next" href="ex1.html"><div><div class="nx-label">up next</div><h3>Exercise 1 — Fork & Clone</h3></div><span class="nx-arrow">→</span></a>
+<div class="foot"><b>$</b> git workshop · setup</div>
+</div></div>
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  document.querySelectorAll('.code').forEach(function(block) {
+    if (block.querySelector('.copy-btn')) return;
+    var cmd = block.innerText.trim();
+    var btn = document.createElement('button');
+    btn.className = 'copy-btn';
+    btn.textContent = 'copy';
+    btn.addEventListener('click', function() {
+      navigator.clipboard && navigator.clipboard.writeText(cmd);
+      btn.textContent = 'copied!';
+      setTimeout(function() { btn.textContent = 'copy'; }, 1500);
+    });
+    block.appendChild(btn);
+  });
+});
+</script>
+</body>
+</html>
